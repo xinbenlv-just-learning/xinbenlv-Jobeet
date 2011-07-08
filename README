@@ -6,4 +6,28 @@ Notes:
 1. This code-repository is to accompany the symfony tutorial known as "Practical Symfony" (Doctrine version) from the Officail Symfony website for Symfony 1 (http://www.symfony-project.org/jobeet/1_4/Doctrine/)
 2. I am using ubuntu 10.04 LTS desktop, LAMP-Server package (using tasksel) and Symfony 1.4.11 
 3. As mentioned in the Day 1 of Practical Symfony, the project is located in /home/sfprojects/jobeet
+4. in /etc/hosts added 127.0.0.1 www.jobeet.com.localhost
+5. in /etc/apache2/sites-available/, added file name:"www.jobeet.com.localhost"
+  file content:
+  =====FILE CONTENT=====
+  <VirtualHost *:80>
+    ServerName www.jobeet.com.localhost
+    DocumentRoot "/home/sfprojects/jobeet/web"
+    DirectoryIndex index.php
+    <Directory "/home/sfprojects/jobeet/web">
+      AllowOverride All
+      Allow from All
+    </Directory>
+
+    Alias /sf /home/sfprojects/jobeet/lib/vendor/symfony/data/web/sf
+    <Directory "/home/sfprojects/jobeet/lib/vendor/symfony/data/web/sf">
+      AllowOverride All
+      Allow from All
+    </Directory>
+  </VirtualHost>
+  =====END OF FILE CONTENT=====
+  load this site with command 
+  $sudo a2ensite www.jobeet.com.localhost
+  $sudo service apache2 reload
+  You should be able to test the site via browsing http://www.jobeet.com.localhost
 
