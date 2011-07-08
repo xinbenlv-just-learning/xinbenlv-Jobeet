@@ -1,3 +1,9 @@
 Repo Subject: xinbenlv-Jobeet
 Description: Code Tracking: Learning symfony 1.4. Practical Symfony 24 days (Doctrine)
 Git Read-Only: git://github.com/xinbenlv/xinbenlv-Jobeet.git
+Created: 2011-07-08
+Notes:
+1. This code-repository is to accompany the symfony tutorial known as "Practical Symfony" (Doctrine version) from the Officail Symfony website for Symfony 1 (http://www.symfony-project.org/jobeet/1_4/Doctrine/)
+2. I am using ubuntu 10.04 LTS desktop, LAMP-Server package (using tasksel) and Symfony 1.4.11 
+3. As mentioned in the Day 1 of Practical Symfony, the project is located in /home/sfprojects/jobeet
+
