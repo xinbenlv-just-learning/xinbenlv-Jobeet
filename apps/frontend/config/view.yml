@@ -18,3 +18,7 @@ default:
 
   has_layout:     true
   layout:         layout
+indexSuccess:
+  stylesheets: [jobs.css]
+showSuccess:
+  stylesheets: [job.css]
