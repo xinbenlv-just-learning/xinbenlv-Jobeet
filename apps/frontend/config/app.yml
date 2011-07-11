@@ -3,3 +3,6 @@
 
 # default values
 #all:
+all:
+  active_days:          30
+  max_jobs_on_homepage: 5

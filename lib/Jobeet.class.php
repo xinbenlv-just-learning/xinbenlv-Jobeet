@@ -1,3 +1,4 @@
+<?php
 class Jobeet
 {
   static public function slugify($text)

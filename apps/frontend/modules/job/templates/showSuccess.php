@@ -2,6 +2,7 @@
   <?php echo sprintf('%s is looking for a %s', $job->getCompany(), $job->getPosition()) ?>
 <?php end_slot(); ?>
 
+
 <?php use_stylesheet('job.css') ?>
 <?php use_helper('Text') ?>
  
@@ -20,7 +21,7 @@
           alt="<?php echo $job->getCompany() ?> logo" />
       </a>
     </div>
-  <?php endif ?>
+  <?php endif; ?>
  
   <div class="description">
     <?php echo simple_format_text($job->getDescription()) ?>
@@ -31,7 +32,7 @@
   <p class="how_to_apply"><?php echo $job->getHowToApply() ?></p>
  
   <div class="meta">
-    <small>posted on <?php echo $job->getDateTimeObject('created_at')->format('m/d/Y') ?></small>
+    <small>posted on <?php echo date('m/d/Y', strtotime($job->getCreatedAt())) ?></small>
   </div>
  
   <div style="padding: 20px 0">
