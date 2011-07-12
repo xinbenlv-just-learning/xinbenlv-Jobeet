@@ -41,7 +41,7 @@
 
 
 [Trouble Shooting]
-  On "Day 8:Unit Tests" You might have something like this
+  1. On "Day 8:Unit Tests" You might have something like this
     "You must install and enable xdebug before using lime coverage."
   To install xdebug run "sudo apt-get install php5-xdebug" and add the following code to php.ini usually located in /etc/php5/apache2/php.ini
   =====Start of Code to add to php.ini=====
@@ -49,5 +49,28 @@
   [zend]
   zend_extension="/usr/local/php/modules/xdebug.so"
   =====End of Code to add to php.ini=====
+  2. On "Day 9:Functional Tests" if you see
+  "Could not find the element "27" (position 1) in the current DOM.  "
+  It is probably because they put max_jobs_on_homepage to 5 instead of 10, refer to http://oldforum.symfony-project.org/index.php/m/98301/
 
-
+  3. On "Day 9: Functional Tests" do
+    symfony test:all
+  I got this
+=====Start of Script Output=====
+sfprojects@ubuntu:~/jobeet$ symfony test:all
+functional/frontend/categoryActionsTest..............................ok
+functional/frontend/jobActionsTest...................................ok
+functional/functional/frontend/categoryActionsTest...................dubious
+    Test returned status 255
+    Failed tests: 0
+functional/functional/frontend/jobActionsTest........................dubious
+    Test returned status 255
+    Failed tests: 0
+unit/JobeetTest......................................................ok
+Failed Test                     Stat  Total   Fail  Errors  List of Failed
+--------------------------------------------------------------------------
+l/frontend/categoryActionsTest   255      1      1      0  0
+tional/frontend/jobActionsTest   255      1      1      0  0
+Failed 2/5 test scripts, 60.00% okay. 2/35 subtests failed, 94.29% okay.
+=====End of Script Output=====
+  make a tag: problem-day9-dubious

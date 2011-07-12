@@ -12,7 +12,11 @@ $_test_dir = realpath(dirname(__FILE__).'/..');
 
 // configuration
 require_once dirname(__FILE__).'/../../config/ProjectConfiguration.class.php';
-$configuration = ProjectConfiguration::hasActive() ? ProjectConfiguration::getActive() : new ProjectConfiguration(realpath($_test_dir.'/..'));
+//$configuration = ProjectConfiguration::hasActive() ? ProjectConfiguration::getActive() : new ProjectConfiguration(realpath($_test_dir.'/..'));
+$configuration = ProjectConfiguration::getApplicationConfiguration( 
+  'frontend', 'test', true 
+); 
+
 
 // autoloader
 $autoload = sfSimpleAutoload::getInstance(sfConfig::get('sf_cache_dir').'/project_autoload.cache');
