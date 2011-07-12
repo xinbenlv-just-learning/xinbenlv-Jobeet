@@ -32,7 +32,6 @@ abstract class BaseJobeetCategory extends sfDoctrineRecord
         $this->hasColumn('name', 'string', 255, array(
              'type' => 'string',
              'notnull' => true,
-             'unique' => true,
              'length' => 255,
              ));
     }
@@ -54,6 +53,13 @@ abstract class BaseJobeetCategory extends sfDoctrineRecord
              'foreign' => 'category_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
+        $sluggable0 = new Doctrine_Template_Sluggable(array(
+             'fields' => 
+             array(
+              0 => 'name',
+             ),
+             ));
         $this->actAs($timestampable0);
+        $this->actAs($sluggable0);
     }
 }
