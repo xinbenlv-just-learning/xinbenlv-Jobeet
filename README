@@ -1,8 +1,12 @@
-Repo Subject: xinbenlv-Jobeet
-Description: Code Tracking: Learning symfony 1.4. Practical Symfony 24 days (Doctrine)
-Git Read-Only: git://github.com/xinbenlv/xinbenlv-Jobeet.git
-Created: 2011-07-08
-Notes:
+[Title]
+  xinbenlv-Jobeet
+[Description]
+  Code Tracking: Learning symfony 1.4. Practical Symfony 24 days (Doctrine)
+[Link]
+  Git Read-Only: git://github.com/xinbenlv/xinbenlv-Jobeet.git
+[Created]
+  2011-07-08
+[Notes]
 1. This code-repository is to accompany the symfony tutorial known as "Practical Symfony" (Doctrine version) from the Official Symfony website for Symfony 1 (http://www.symfony-project.org/jobeet/1_4/Doctrine/)
 2. I am using ubuntu 10.04 LTS desktop, LAMP-Server package (using tasksel) and Symfony 1.4.12 
 3. As mentioned in the Day 1 of Practical Symfony, the project is located in /home/sfprojects/jobeet
@@ -30,4 +34,14 @@ Notes:
   $sudo a2ensite www.jobeet.com.localhost
   $sudo service apache2 reload
   You should be able to test the site via browsing http://www.jobeet.com.localhost
+[Trouble Shooting]
+  On "Day 8:Unit Tests" You might have something like this
+    "You must install and enable xdebug before using lime coverage."
+  To install xdebug run "sudo apt-get install php5-xdebug" and add the following code to php.ini usually located in /etc/php5/apache2/php.ini
+  =====Start of Code to add to php.ini=====
+  extension=xdebug.so
+  [zend]
+  zend_extension="/usr/local/php/modules/xdebug.so"
+  =====End of Code to add to php.ini=====
+
 
