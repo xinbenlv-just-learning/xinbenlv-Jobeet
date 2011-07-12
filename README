@@ -34,6 +34,12 @@
   $sudo a2ensite www.jobeet.com.localhost
   $sudo service apache2 reload
   You should be able to test the site via browsing http://www.jobeet.com.localhost
+6. On Day 8 step "Test Data" remember to add 
+  <?php
+  require_once dirname(__FILE__).'/../bootstrap/unit.php';
+  at the head of file test/unit/model/JobeetJobTest.php
+
+
 [Trouble Shooting]
   On "Day 8:Unit Tests" You might have something like this
     "You must install and enable xdebug before using lime coverage."
