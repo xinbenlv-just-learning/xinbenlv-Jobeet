@@ -38,7 +38,7 @@
   <?php
   require_once dirname(__FILE__).'/../bootstrap/unit.php';
   at the head of file test/unit/model/JobeetJobTest.php
-
+7. On Day 9, the function test of jobActions sometimes failed because created_at is not specified in the fixtures and the expires_at has already exceeded in the real world when I am implementing this project. To ensure that the job appear at the first line of the web page, we have to configure the fixture, manually set created_at and expires_at.
 
 [Trouble Shooting]
   1. On "Day 8:Unit Tests" You might have something like this
