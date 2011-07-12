@@ -5,10 +5,13 @@ category:
   options:  { model: JobeetCategory, type: object }
 
 job:
-  class:        sfDoctrineRouteCollection
-  options:      { model: JobeetJob, column: token }
-  requirements: { token: \w+ }
-
+  class:   sfDoctrineRouteCollection
+  options:
+    model:          JobeetJob
+    column:         token
+    object_actions: { publish: put }
+  requirements:
+    token: \w+
  
 job_show_user:
   url:     /job/:company_slug/:location_slug/:id/:position_slug

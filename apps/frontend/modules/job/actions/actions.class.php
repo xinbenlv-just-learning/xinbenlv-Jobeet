@@ -58,6 +58,18 @@ class jobActions extends sfActions
     $this->redirect('job/index');
   }
 
+  public function executePublish(sfWebRequest $request)
+  {
+    $request->checkCSRFProtection();
+   
+    $job = $this->getRoute()->getObject();
+    $job->publish();
+   
+    $this->getUser()->setFlash('notice', sprintf('Your job is now online for %s days.', sfConfig::get('app_active_days')));
+   
+    $this->redirect('job_show_user', $job);
+  }  
+
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
     $form->bind(

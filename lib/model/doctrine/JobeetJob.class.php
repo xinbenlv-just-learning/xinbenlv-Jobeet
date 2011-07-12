@@ -5,6 +5,12 @@
  */
 class JobeetJob extends BaseJobeetJob
 {
+  public function publish()
+  {
+    $this->setIsActivated(true);
+    $this->save();
+  }
+
   public function save(Doctrine_Connection $conn = null)
   {
     if ($this->isNew() && !$this->getExpiresAt())
