@@ -74,4 +74,4 @@ tional/frontend/jobActionsTest   255      1      1      0  0
 Failed 2/5 test scripts, 60.00% okay. 2/35 subtests failed, 94.29% okay.
 =====End of Script Output=====
   make a tag: problem-day9-dubious
-  
+  Individual tests passed but the symfony test:all returned "dubious", not solved 
