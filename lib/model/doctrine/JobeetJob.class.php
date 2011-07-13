@@ -66,4 +66,18 @@ class JobeetJob extends BaseJobeetJob
     return ceil(($this->getDateTimeObject('expires_at')->format('U') - time()) / 86400);
   }
 
+  public function extend()
+  {
+    if (!$this->expiresSoon())
+    {
+      return false;
+    }
+ 
+    $this->setExpiresAt(date('Y-m-d', time() + 86400 * sfConfig::get('app_active_days')));
+ 
+    $this->save();
+ 
+    return true;
+  }
+
 }

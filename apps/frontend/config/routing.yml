@@ -9,7 +9,7 @@ job:
   options:
     model:          JobeetJob
     column:         token
-    object_actions: { publish: put }
+    object_actions: { publish: PUT, extend: PUT }
   requirements:
     token: \w+
  
