@@ -3,6 +3,7 @@ include(dirname(__FILE__).'/../../bootstrap/functional.php');
  
 $browser = new JobeetTestFunctional(new sfBrowser());
 $browser->loadData();
+$browser->setTester('doctrine', 'sfTesterDoctrine');
  
 $browser->info('1 - The homepage')->
   get('/')->
@@ -104,3 +105,46 @@ $browser->info('3 - Post a Job page')->
   
 ;
 
+
+$browser->
+  info('  3.2 - Submit a Job with invalid values')->
+ 
+  get('/job/new')->
+  click('Preview your job', array('job' => array(
+    'company'      => 'Sensio Labs',
+    'position'     => 'Developer',
+    'location'     => 'Atlanta, USA',
+    'email'        => 'not.an.email',
+  )))->
+ 
+  with('form')->begin()->
+    hasErrors(3)->
+    isError('description', 'required')->
+    isError('how_to_apply', 'required')->
+    isError('email', 'invalid')->
+  end()
+;
+
+$browser->info('  3.3 - On the preview page, you can publish the job')->
+  createJob(array('position' => 'FOO1'))->
+  click('Publish', array(), array('method' => 'put', '_with_csrf' => true))->
+ 
+  with('doctrine')->begin()->
+    check('JobeetJob', array(
+      'position'     => 'FOO1',
+      'is_activated' => true,
+    ))->
+  end()
+;
+
+
+$browser->info('  3.4 - On the preview page, you can delete the job')->
+  createJob(array('position' => 'FOO2'))->
+  click('Delete', array(), array('method' => 'delete', '_with_csrf' => true))->
+ 
+  with('doctrine')->begin()->
+    check('JobeetJob', array(
+      'position' => 'FOO2',
+    ), false)->
+  end()
+;

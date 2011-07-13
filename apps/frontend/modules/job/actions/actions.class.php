@@ -53,7 +53,7 @@ class jobActions extends sfActions
   {
     $request->checkCSRFProtection();
     $job = $this->getRoute()->getObject();
-    $jobeet_job->delete();
+    $job->delete();
 
     $this->redirect('job/index');
   }
