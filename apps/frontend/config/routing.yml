@@ -1,3 +1,10 @@
+affiliate:
+  class:   sfDoctrineRouteCollection
+  options:
+    model: JobeetAffiliate
+    actions: [new, create]
+    object_actions: { wait: get }
+
 category:
   url:     /category/:slug.:sf_format
   class:   sfDoctrineRoute
@@ -13,6 +20,14 @@ job:
     object_actions: { publish: PUT, extend: PUT }
   requirements:
     token: \w+
+
+api_jobs:
+  url:     /api/:token/jobs.:sf_format
+  class:   sfDoctrineRoute
+  param:   { module: api, action: list }
+  options: { model: JobeetJob, type: list, method: getForToken }
+  requirements:
+    sf_format: (?:xml|json|yaml)
  
 job_show_user:
   url:     /job/:company_slug/:location_slug/:id/:position_slug

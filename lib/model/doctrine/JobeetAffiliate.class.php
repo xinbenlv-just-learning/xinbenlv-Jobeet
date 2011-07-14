@@ -9,4 +9,41 @@ class JobeetAffiliate extends BaseJobeetAffiliate
   {
     return $this->getUrl();
   }
+  public function save(Doctrine_Connection $conn = null)
+  {
+    if (!$this->getToken())
+    {
+      $this->setToken(sha1($this->getEmail().rand(11111, 99999)));
+    }
+ 
+    return parent::save($conn);
+  }
+
+  public function getActiveJobs()
+  {
+    $q = Doctrine_Query::create()
+      ->select('j.*')
+      ->from('JobeetJob j')
+      ->leftJoin('j.JobeetCategory c')
+      ->leftJoin('c.JobeetAffiliates a')
+      ->where('a.id = ?', $this->getId());
+ 
+    $q = Doctrine_Core::getTable('JobeetJob')->addActiveJobsQuery($q);
+ 
+    return $q->execute();
+  }
+  
+  public function activate()
+  {
+    $this->setIsActive(true);
+ 
+    return $this->save();
+  }
+ 
+  public function deactivate()
+  {
+    $this->setIsActive(false);
+ 
+    return $this->save();
+  }
 }
