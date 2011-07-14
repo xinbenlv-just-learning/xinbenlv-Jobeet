@@ -1,11 +1,18 @@
 [Title]
   xinbenlv-Jobeet
+
 [Description]
   Code Tracking: Learning symfony 1.4. Practical Symfony 24 days (Doctrine)
+
 [Link]
   Git Read-Only: git://github.com/xinbenlv/xinbenlv-Jobeet.git
+
 [Created]
   2011-07-08
+
+[Extra-Tools To Install]
+  curl
+
 [Notes]
 1. This code-repository is to accompany the symfony tutorial known as "Practical Symfony" (Doctrine version) from the Official Symfony website for Symfony 1 (http://www.symfony-project.org/jobeet/1_4/Doctrine/)
 2. I am using ubuntu 10.04 LTS desktop, LAMP-Server package (using tasksel) and Symfony 1.4.12 
@@ -39,6 +46,15 @@
   require_once dirname(__FILE__).'/../bootstrap/unit.php';
   at the head of file test/unit/model/JobeetJobTest.php
 7. On Day 9, the function test of jobActions sometimes failed because created_at is not specified in the fixtures and the expires_at has already exceeded in the real world when I am implementing this project. To ensure that the job appear at the first line of the web page, we have to configure the fixture, manually set created_at and expires_at.
+
+8. Day 15 ends with:
+
+=====Start of Bash Output=====
+sfprojects@ubuntu:~/jobeet$ symfony test:functional backend affiliateActions
+
+
+  SQLSTATE[42S02]: Base table or view not found: 1146 Table 'jobeet_test.sf_guard_user' doesn't exist. Failing Query: "DELETE FROM sf_guard_user"
+=====End of Bash Output=====
 
 [Trouble Shooting]
   1. On "Day 8:Unit Tests" You might have something like this
