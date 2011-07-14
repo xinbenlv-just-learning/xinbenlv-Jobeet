@@ -1,5 +1,5 @@
 Options +FollowSymLinks +ExecCGI
-
+php_value short_open_tag 0
 <IfModule mod_rewrite.c>
   RewriteEngine On
 

@@ -1,9 +1,10 @@
 category:
-  url:      /category/:slug
-  class:    sfDoctrineRoute
-  param:    { module: category, action: show }
-  options:  { model: JobeetCategory, type: object }
-
+  url:     /category/:slug.:sf_format
+  class:   sfDoctrineRoute
+  param:   { module: category, action: show, sf_format: html }
+  options: { model: JobeetCategory, type: object }
+  requirements:
+    sf_format: (?:html|atom)
 job:
   class:   sfDoctrineRouteCollection
   options:

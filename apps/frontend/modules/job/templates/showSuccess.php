@@ -11,6 +11,9 @@
 <?php endif ?>
  
 <div id="job">
+  <div class="feed">
+  <a href="<?php echo url_for('category', array('sf_subject' => $category, 'sf_format' => 'atom')) ?>">Feed</a>
+</div>
   <h1><?php echo $job->getCompany() ?></h1>
   <h2><?php echo $job->getLocation() ?></h2>
   <h3>

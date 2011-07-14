@@ -74,4 +74,10 @@ tional/frontend/jobActionsTest   255      1      1      0  0
 Failed 2/5 test scripts, 60.00% okay. 2/35 subtests failed, 94.29% okay.
 =====End of Script Output=====
   make a tag: problem-day9-dubious
-  Individual tests passed but the symfony test:all returned "dubious", not solved 
+  Individual tests passed but the symfony test:all returned "dubious", not solved
+
+  4. On "Day 14: Feeds" if you see the following output, you need to disable short tags in php configurations:
+=====Start of Browser Output=====
+Parse error: syntax error, unexpected T_STRING in /home/sfprojects/jobeet/apps/frontend/modules/job/templates/indexSuccess.atom.php on line 1 Call Stack: 0.0896 331344 1. {main}() /home/sfprojects/jobeet/web/frontend_dev.php:0 0.3375 6772032 2. sfContext->dispatch() /home/sfprojects/jobeet/web/frontend_dev.php:13 0.3375 6772076 3. sfFrontWebController->dispatch() /usr/share/php/symfony/util/sfContext.class.php:170 0.3377 6791260 4. sfController->forward() /usr/share/php/symfony/controller/sfFrontWebController.class.php:48 0.3417 7121700 5. sfFilterChain->execute() /usr/share/php/symfony/controller/sfController.class.php:238 0.3419 7122828 6. sfRenderingFilter->execute() /usr/share/php/symfony/filter/sfFilterChain.class.php:53 0.3419 7122828 7. sfFilterChain->execute() /usr/share/php/symfony/filter/sfRenderingFilter.class.php:33 0.3420 7123912 8. sfExecutionFilter->execute() /usr/share/php/symfony/filter/sfFilterChain.class.php:53 0.6115 11495780 9. sfExecutionFilter->handleView() /usr/share/php/symfony/filter/sfExecutionFilter.class.php:47 0.6116 11495780 10. sfExecutionFilter->executeView() /usr/share/php/symfony/filter/sfExecutionFilter.class.php:116 0.6227 11635212 11. sfPHPView->render() /usr/share/php/symfony/filter/sfExecutionFilter.class.php:155 0.6227 11635552 12. sfPHPView->renderFile() /usr/share/php/symfony/view/sfPHPView.class.php:185
+=====End of Browser Output=====
+  by adding "php_value short_open_tag 0" in the web/.htaccess
