@@ -87,6 +87,13 @@ class jobActions extends sfActions
     $this->redirect('job_show_user', $job);
   }
 
+  public function executeSearch(sfWebRequest $request)
+  {
+    $this->forwardUnless($query = $request->getParameter('query'), 'job', 'index');
+ 
+    $this->jobs = Doctrine_Core::getTable('JobeetJob') ->getForLuceneQuery($query);
+  }
+
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
     $form->bind(
